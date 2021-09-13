@@ -29,7 +29,16 @@ function ctrl_c(){
 
 }
 
-
+function banner(){
+    echo -e "${turquois}
+            ____  _____ ___________
+           / __ \/ ___// ____/ ___/
+          / /_/ /\__ \/ /    \__ \ 
+         / _, _/___/ / /___ ___/ / 
+        /_/ |_|/____/\____//____/   
+        ${end}"
+    echo -e "\t   ${red}>${end}${purple} By: ${end}${yellow}Harrizzon${end}${red} ! <${end}\n"
+}
 
 
 # HELP
@@ -57,8 +66,35 @@ function menu(){
     
     clear;
     echo -e "\n${green} [>] Iniciando... [<]${end}";sleep 1;
+    clear
+    opt=0
+    
+    while [ $opt = 0 ]
+    do
+        banner
+        echo -e "${turquois}1)${end}${yellow} Bash reverse shells${end}"
+        echo -e "${turquois}2)${end}${yellow} Perl reverse shells${end}"
+        echo -e "${turquois}3)${end}${yellow} Python reverse shells${end}"
+        echo -e "${turquois}4)${end}${yellow} PHP reverse shells${end}"
+        echo -e "${turquois}5)${end}${yellow} RUBY reverse shells${end}"
+        echo -e "${turquois}6)${end}${yellow} JAVA reverse shells${end}"
+        echo -e "${turquois}7)${end}${yellow} GO reverse shells${end}"
+        echo -e "${turquois}8)${end}${yellow} Powershell reverse shells${end}"
+        read opc
+        case $opc in
+            #1)
+            #2)
+            #3)
+            #4)
+            #5)
+            #6)
+            #7)
+            #8)
+            *) echo -e "${red}[!]${end} Seleccione una opcion valida ${red}[!]${end}";sleep 1.2; clear
+        esac
 
-
+    done
+    
 }
 
 # FLUJO
@@ -69,6 +105,7 @@ tput civs; while getopts ":h:m:b:p:py:php:r:nc:j:g:pow:" option; do
     case $option in
         m) menu=$OPTARG && let cont+=1 ;;
         h) Help;;
+
     esac
 done
 
