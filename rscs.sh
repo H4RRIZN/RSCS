@@ -63,6 +63,8 @@ function menu(){
         echo -e "${turquois}6)${end}${yellow} JAVA reverse shells${end}"
         echo -e "${turquois}7)${end}${yellow} GO reverse shells${end}"
         echo -e "${turquois}8)${end}${yellow} Powershell reverse shells${end}"
+         echo -e "${turquois}9)${end}${yellow} Show All${end}"
+        echo -e "${turquois}10)${end}${yellow} Cambiar configuracion${end}"
         read opc
         case $opc in
             1) bashm; opt=1;;
@@ -73,6 +75,8 @@ function menu(){
             6) javam; opt=1;;
             7) gom; opt=1;;
             8) powerm; opt=1;;
+            10) changeip; opt=1;;
+            
             *) echo -e "${red}[!]${end} Seleccione una opcion valida ${red}[!]${end}";sleep 1.2; clear
         esac
 
@@ -90,8 +94,8 @@ function bashm(){
         
         
 
-        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
-        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
         #1)
@@ -112,8 +116,8 @@ function perlm(){
         
         
 
-        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
-        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
         #1)
@@ -135,8 +139,8 @@ function pym(){
         
         
 
-        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
-        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
         #1)
@@ -159,8 +163,8 @@ function phpm(){
         
         
 
-        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
-        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
         #1)
@@ -181,8 +185,8 @@ function rubym(){
         
         
 
-        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
-        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
         #1)
@@ -206,8 +210,8 @@ function javam(){
         
         
 
-        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
-        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
         #1)
@@ -228,8 +232,8 @@ function gom(){
         
         
 
-        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
-        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
         #1)
@@ -260,8 +264,8 @@ function powerm(){
         
         
 
-        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
-        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
         #1)
@@ -270,6 +274,17 @@ function powerm(){
         *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; powerm
         esac
     done
+}
+
+function changeip(){
+    clear
+    echo -e "${red}[>] Ingresa tu IP${end}${green}"
+    read ipe
+    echo -e "${end}${red}[>] Ingresa un puerto${end}${green}"
+    read portt
+    aipi=$ipe
+    portk=$portt
+    menu
 }
 
 # FLUJO
