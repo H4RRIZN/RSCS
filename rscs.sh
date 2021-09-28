@@ -335,19 +335,37 @@ function showall(){
         esac
     done
 
-
+}
 # DEPENDENCIAS
 
-function dependecies(){
+function dependencies(){
     tput civis
     clear; dependecias=(xclip)
     echo -e "\n\t${green}[${red}!${green}] ${yellow}Verificando dependencias en el sistema...${end}"
+    sleep 1.5;
+    for program in "${dependencias[@]}";do
+        echo -ne "\n\t\t${green}[${yellow}>${green}]${end} ${yellow}Herramienta: ${end}${green} $program${green}[${yellow}<${green}]${end}" 
+        test -f /usr/bin/$program
+
+        if [ "$(echo $?)" == "0" ];then
+            echo -e "${green} (✓)${end}"
+        elif [ "$(echo $?)" == "1" ];then
+            echo -e "${red} (X)${end}\n"
+            echo -e "\t${green}[${yellow}>${green}]${end} ${yellow}Instalando Herramienta:${end}${green} $program${green}[${yellow}<${green}]${end}"
+			apt-get install $program -y > /dev/null 2>&1
+        else
+            echo -e "\n${red}[!] Necesitas ser ROOT. [!]${end}\n"
+            exit 1
+        fi; sleep 1.1
+    done
+    echo -e "\n\t  >> Todas las dependencias estan instaladas <<"
 
 }
 
 
 
 # FLUJO
+
 clear
 declare aipi
 declare portk
@@ -358,4 +376,3 @@ read portt
 aipi=$ipe
 portk=$portt
 echo -e "\n${green} [>] Iniciando... [<]${end}";sleep 1;
-menu
