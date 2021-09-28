@@ -8,3 +8,4 @@
 RSCS es un simple script que lista distintas reverse shells en la terminal de manera interactiva en el cual podremos visualizar las reverse shells con una IP y PUERTO que indiquemos.
 
 ## DEMO
+
