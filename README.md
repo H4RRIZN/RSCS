@@ -4,4 +4,5 @@
    <img src="https://github.com/Harrizzon/RSCS/blob/main/misc/RSCS_banner.png" width="350" title="RSCS">
 </p>
 
+## RSCS
 RSCS es un simple script que lista distintas reverse shells en la terminal.
