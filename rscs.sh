@@ -336,6 +336,16 @@ function showall(){
     done
 
 
+# DEPENDENCIAS
+
+function dependecies(){
+    tput civis
+    clear; dependecias=(xclip)
+    echo -e "\n\t${green}[${red}!${green}] ${yellow}Verificando dependencias en el sistema...${end}"
+
+}
+
+
 
 }
 
