@@ -340,39 +340,49 @@ function showall(){
 
 function dependencies(){
     tput civis
-    clear; dependecias=(xclip)
-    echo -e "\n\t${green}[${red}!${green}] ${yellow}Verificando dependencias en el sistema...${end}"
+    clear; dependencias=(xclip)
+    echo -e "\n${green}[${red}!${green}] ${yellow}Verificando dependencias en el sistema...${end}"
     sleep 1.5;
     for program in "${dependencias[@]}";do
-        echo -ne "\n\t\t${green}[${yellow}>${green}]${end} ${yellow}Herramienta: ${end}${green} $program${green}[${yellow}<${green}]${end}" 
+        echo -ne "\n${green}[${yellow}>${green}]${end} ${yellow}Herramienta: ${end}${green} $program${green} [${yellow}<${green}]${end}" 
         test -f /usr/bin/$program
 
         if [ "$(echo $?)" == "0" ];then
             echo -e "${green} (✓)${end}"
+            break
+        
+        elif [ "$(id -u)" == "0" ]; then
+            echo -e "\n${green}[${yellow}>${green}]${end} ${yellow}Instalando Herramienta:${end}${green} $program${green}[${yellow}<${green}]${end}"
+            apt-get install $program -y > /dev/null 2>&1
+
         elif [ "$(echo $?)" == "1" ];then
             echo -e "${red} (X)${end}\n"
-            echo -e "\t${green}[${yellow}>${green}]${end} ${yellow}Instalando Herramienta:${end}${green} $program${green}[${yellow}<${green}]${end}"
-			apt-get install $program -y > /dev/null 2>&1
-        else
-            echo -e "\n${red}[!] Necesitas ser ROOT. [!]${end}\n"
-            exit 1
+            echo -e "${yellow}Porfavor ejecuta la herramienta como ${red}root${end}${yellow} para instalar las dependencias.${end}"
+            exit 1          
+        
         fi; sleep 1.1
     done
-    echo -e "\n\t  >> Todas las dependencias estan instaladas <<"
-
+    echo -e "\n>> Todas las dependencias estan instaladas <<"
+    sleep 1;clear
+    flujo
 }
 
-
-
-# FLUJO
-
-clear
 declare aipi
 declare portk
-echo -e "${red}[>] Ingresa tu IP${end}${green}"
-read ipe
-echo -e "${end}${red}[>] Ingresa un puerto${end}${green}"
-read portt
-aipi=$ipe
-portk=$portt
-echo -e "\n${green} [>] Iniciando... [<]${end}";sleep 1;
+
+# FLUJO
+function flujo(){
+    echo -e "${red}[>] Ingresa tu IP${end}${green}"
+    read ipe
+    echo -e "${end}${red}[>] Ingresa un puerto${end}${green}"
+    read portt
+    aipi=$ipe
+    portk=$portt
+    echo -e "\n${green} [>] Iniciando... [<]${end}";sleep 1;
+    clear
+    menu
+}
+
+dependencies
+
+
