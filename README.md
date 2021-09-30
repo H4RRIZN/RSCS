@@ -3,6 +3,7 @@
 <p align="center">
    <img src="https://github.com/Harrizzon/RSCS/blob/main/misc/RSCS_banner.png" width="350" title="RSCS">
 </p>
+<a href="https://github.com/noob-hackers"><img title="Language" src="https://img.shields.io/badge/Made%20with-Bash-1f425f.svg?v=103"></a>
 
 RSCS es un simple script que lista distintas reverse shells en la terminal de manera interactiva en el cual podremos visualizar las reverse shells con una IP y PUERTO que indiquemos.
 
