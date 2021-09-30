@@ -61,6 +61,7 @@ function menu(){
         echo -e "${turquois}8)${end}${yellow} Powershell reverse shells${end}"
         echo -e "${turquois}9)${end}${yellow} Show All${end}"
         echo -e "${turquois}10)${end}${yellow} Cambiar configuracion${end}"
+        echo -e "\n${turquois}x)${end}${yellow} Salir${end}"
         read opc
         case $opc in
             1) bashm; opt=1;;
@@ -73,6 +74,7 @@ function menu(){
             8) powerm; opt=1;;
             9) showall; opt=1;;
             10) changeip; opt=1;;
+            x) ctrl_c; opt=1;;
             *) echo -e "${red}[!]${end} Seleccione una opcion valida ${red}[!]${end}";sleep 1.2; clear
         esac
     done
