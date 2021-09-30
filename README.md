@@ -9,3 +9,11 @@ RSCS es un simple script que lista distintas reverse shells en la terminal de ma
 
 ## DEMO
 
+
+
+## Instalacion
+```bash
+   git clone https://github.com/Harrizzon/RSCS && cd RSCS
+   chmod +x rscs.sh
+   cp rscs.sh /usr/bin/
+```
