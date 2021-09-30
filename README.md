@@ -18,3 +18,14 @@ chmod +x rscs.sh
 cp rscs.sh /usr/bin/
 ```
 Este script puede ser ejecutado desde la carpeta ya clonada, pero es altamente recomendable que se agregue al directorio /usr/bin para poder ejecutarlo desde cualquier carpeta de la terminal.
+
+## USO
+Para usar el script podemos ejecutarlo de dos formas.
+```bash
+./rscs
+```
+Or
+```bash
+bash rscs
+```
+Una vez el programa se ejecute, este mismo verificara las dependencias para su uso. Cuando todas las dependencias esten instaladas el script comenzara su funcion principal.
