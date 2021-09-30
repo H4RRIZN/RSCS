@@ -15,3 +15,6 @@ RSCS es un simple script que lista distintas reverse shells en la terminal de ma
    chmod +x rscs.sh
    cp rscs.sh /usr/bin/
 ```
+# TESTING
+
+https://github-readme-stats.vercel.app/api?username={Harrizzon}
