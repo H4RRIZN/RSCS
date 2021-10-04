@@ -15,7 +15,6 @@ RSCS es un simple script que lista distintas reverse shells en la terminal de ma
 ```bash
 git clone https://github.com/Harrizzon/RSCS && cd RSCS
 chmod +x rscs.sh
-cp rscs.sh /usr/bin/
 ```
 Este script puede ser ejecutado desde la carpeta ya clonada, pero es altamente recomendable que se agregue al directorio /usr/bin para poder ejecutarlo desde cualquier carpeta de la terminal.
 
